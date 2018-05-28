@@ -5,11 +5,25 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var sassMiddleware = require('node-sass-middleware')
+var mongoose = require('mongoose')
 
 var index = require('./routes/index')
 var users = require('./routes/users')
 
 var app = express()
+
+// set up mongoose connection
+var db = mongoose.connection
+var ds = [
+  process.env.DS_USER,
+  process.env.DS_PASSWD,
+  process.env.DS_URL
+]
+var mongoDbUrl = 'mongodb://' + ds[0] + ':' + ds[1] + '@' + ds[2]
+
+mongoose.connect(mongoDbUrl)
+mongoose.Promise = global.Promise
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

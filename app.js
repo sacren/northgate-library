@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var sassMiddleware = require('node-sass-middleware')
 // import mongoose module
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 var index = require('./routes/index')
 var users = require('./routes/users')

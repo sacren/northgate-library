@@ -10,5 +10,12 @@ const Author = new Schema({
   deathdate: {type: Date}
 })
 
+// virtual property of author's full name
+Author
+.virtual('name')
+.get(function () {
+  return this.lastname + ', ' + this.firstname
+})
+
 // export the model
 module.exports = mongoose.model('Author', Author)

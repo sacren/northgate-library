@@ -17,5 +17,12 @@ Author
   return this.lastname + ', ' + this.firstname
 })
 
+// virtual property of author's URL
+Author
+.virtual('url')
+.get(function () {
+  return '/catalog/author' + this._id
+})
+
 // export the model
 module.exports = mongoose.model('Author', Author)

@@ -12,5 +12,12 @@ const Genre = new Schema({
   }
 })
 
+// virtual property of genre's URL
+Genre
+.virtual('url')
+.get(function () {
+  return '/catalog/genre/' + this._id
+})
+
 // export the model
 module.exports = mongoose.model('Genre', Genre)

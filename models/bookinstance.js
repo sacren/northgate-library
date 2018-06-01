@@ -15,5 +15,12 @@ const BookInstance = new Schema({
   duedate: {type: Date, default: Date.now}
 })
 
+// virtual property of bookinstance's URL
+BookInstance
+.virtual('url')
+.get(function () {
+  return '/catalog/bookinstance/' + this._id
+})
+
 // export the model
 module.exports = mongoose.model('BookInstance', BookInstance)

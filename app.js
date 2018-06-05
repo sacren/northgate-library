@@ -5,6 +5,7 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var sassMiddleware = require('node-sass-middleware')
+
 // import mongoose module
 const mongoose = require('mongoose')
 
@@ -21,15 +22,12 @@ const ds = [
   process.env.DS_PASSWD,
   process.env.DS_URL
 ]
-var mongoDbUrl = 'mongodb://' + ds[0] + ':' + ds[1] + '@' + ds[2]
 
-mongoose.connect(mongoDbUrl)
+mongoose.connect('mongodb://' + ds[0] + ':' + ds[1] + '@' + ds[2])
 mongoose.Promise = global.Promise
 
-// get default mongoose connection
-// bind connection to error event
-var db = mongoose.connection
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+// bind default connection to error event
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

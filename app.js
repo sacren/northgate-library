@@ -8,15 +8,15 @@ var sassMiddleware = require('node-sass-middleware')
 // import mongoose module
 const mongoose = require('mongoose')
 
-var index = require('./routes/index')
-var users = require('./routes/users')
+const index = require('./routes/index')
+const users = require('./routes/users')
 const catalog = require('./routes/catalog')
 
 var app = express()
 
 // set up default mongoose connection
 // let mongoose use global promise library
-var ds = [
+const ds = [
   process.env.DS_USER,
   process.env.DS_PASSWD,
   process.env.DS_URL

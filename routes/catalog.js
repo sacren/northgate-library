@@ -5,11 +5,10 @@ const router = express.Router()
 const bookController = require('../controllers/bookController')
 const authorController = require('../controllers/authorController')
 
-// Routes of Book
-
 // GET catalog home page
 router.get('/', bookController.index)
 
+// Routes of Book
 // this route must come before routes that show Book (via id)
 // GET request to create Book
 router.get('/book/create', bookController.bookCreateGet)

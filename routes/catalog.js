@@ -5,6 +5,7 @@ const router = express.Router()
 const bookController = require('../controllers/bookController')
 const authorController = require('../controllers/authorController')
 const genreController = require('../controllers/genreController')
+const bookinstanceController = require('../controllers/bookinstanceController')
 
 // GET catalog home page
 router.get('/', bookController.index)
@@ -86,5 +87,31 @@ router.get('/genre/:id', genreController.genreDetail)
 
 // GET request for list of all Genre
 router.get('/genres', genreController.genreList)
+
+// Routes of Bookinstance
+// this route must come before routes that show Bookinstance (via id)
+// GET request to create Bookinstance
+router.get('/bookinstance/create', bookinstanceController.bookinstanceCreateGet)
+
+// POST request to create Bookinstance
+router.post('/bookinstance/create', bookinstanceController.bookinstanceCreatePost)
+
+// GET request to delete Bookinstance
+router.get('/bookinstance/:id/delete', bookinstanceController.bookinstanceDeleteGet)
+
+// POST request to delete Bookinstance
+router.post('/bookinstance/:id/delete', bookinstanceController.bookinstanceDeletePost)
+
+// GET request to update Bookinstance
+router.get('/bookinstance/:id/update', bookinstanceController.bookinstanceUpdateGet)
+
+// POST request to update Bookinstance
+router.post('/bookinstance/:id/update', bookinstanceController.bookinstanceUpdatePost)
+
+// GET request for one single Bookinstance details
+router.get('/bookinstance/:id', bookinstanceController.bookinstanceDetail)
+
+// GET request for list of all Bookinstance
+router.get('/bookinstances', bookinstanceController.bookinstanceList)
 
 module.exports = router

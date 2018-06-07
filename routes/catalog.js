@@ -4,6 +4,7 @@ const router = express.Router()
 // import controller modules
 const bookController = require('../controllers/bookController')
 const authorController = require('../controllers/authorController')
+const genreController = require('../controllers/genreController')
 
 // GET catalog home page
 router.get('/', bookController.index)
@@ -59,5 +60,31 @@ router.get('/author/:id', authorController.authorDetail)
 
 // GET request for list of all Authors
 router.get('/authors', authorController.authorList)
+
+// Routes of Genre
+// this route must come before routes that show Genre (via id)
+// GET request to create Genre
+router.get('/genre/create', genreController.genreCreateGet)
+
+// POST request to create Genre
+router.post('/genre/create', genreController.genreCreatePost)
+
+// GET request to delete Genre
+router.get('/genre/:id/delete', genreController.genreDeleteGet)
+
+// POST request to delete Genre
+router.post('/genre/:id/delete', genreController.genreDeletePost)
+
+// GET request to update Genre
+router.get('/genre/:id/update', genreController.genreUpdateGet)
+
+// POST request to update Genre
+router.post('/genre/:id/update', genreController.genreUpdatePost)
+
+// GET request for one single Genre details
+router.get('/genre/:id', genreController.genreDetail)
+
+// GET request for list of all Genre
+router.get('/genres', genreController.genreList)
 
 module.exports = router
